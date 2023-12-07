@@ -228,6 +228,7 @@ import "./admin.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Card } from "./Components/Card";
 import Axios from "axios";
+import { useHistory } from "react-router-dom";
 
 import image1 from "./Components/one.PNG";
 import image2 from "./Components/NUMBERING/2.png";
@@ -318,6 +319,12 @@ function Signup() {
       });
   };
 
+  const buttonVoucher = () => {
+    navigate("/getvoucher");
+  };
+  const buttonAttendance = () => {
+    navigate("/attendance");
+  };
   const getImageForPC = (pcNumber) => {
     // Define an object mapping PC numbers to images
     const pcImages = {
@@ -374,6 +381,8 @@ function Signup() {
           </div>
         ))}
         {/* <button onClick={handleSelectedPC}>Select PC</button> */}
+        <button onClick={buttonVoucher}>GET VOUCHER</button>
+        <button onClick={buttonAttendance}>ATTENDACE</button>
       </div>
     </div>
   );

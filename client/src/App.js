@@ -7,6 +7,9 @@ import Password from "./Password";
 import Signup from "./Signup";
 import Registration from "./Registration";
 import Qrc from "./Qrc";
+import Voucher from "./Voucher";
+import GetVoucher from "./GetVoucher";
+import Attendance from "./Attendance";
 function App() {
   return (
     <Router>
@@ -21,6 +24,9 @@ function App() {
           <Route path="/qrcode" element={<Qrc />} />
           {/* <Route path="/signup" element={<Signup />} /> */}
           <Route path="/landing" element={<Landing />} />
+          <Route path="/voucher" element={<Voucher />} />
+          <Route path="/getvoucher" element={<GetVoucher />} />
+          <Route path="/attendance" element={<Attendance />} />
         </Routes>
       </div>
     </Router>

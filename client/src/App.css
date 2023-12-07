@@ -47,6 +47,7 @@ width: 75%;
 
 button {
   /* display: flex; */
+  justify-content: center;
   align-items: center;
   font-family: inherit;
   font-weight: 500;
@@ -153,3 +154,10 @@ button:hover span {
   padding: 0;
   font-family: 'Courier New', Courier, monospace;
 } */
+
+.vtext{
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 50px;
+
+}

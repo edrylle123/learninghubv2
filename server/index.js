@@ -3,6 +3,9 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
 const mysql = require("mysql");
+const multer = require("multer");
+const csv = require("csv-parser");
+const fs = require("fs");
 
 const db = mysql.createPool({
   host: "localhost",
@@ -15,6 +18,9 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+const storage = multer.memoryStorage(); // Use memory storage for small files
+const upload = multer({ storage: storage });
+
 app.get("/api/get", (req, res) => {
   const sqlSelect = "SELECT * FROM elc_system";
   db.query(sqlSelect, (err, result) => {
@@ -24,7 +30,6 @@ app.get("/api/get", (req, res) => {
 
 app.post("/api/selectedPC", (req, res) => {
   console.log("Received request:", req.body);
-  // ... rest of your code
 });
 app.post("/api/insert", (req, res) => {
   const { idNumber, pcNumber, currentDate, currentTime, purpose } = req.body;
@@ -43,6 +48,19 @@ app.post("/api/insert", (req, res) => {
     }
   );
 });
+
+// app.post("/api/insert/voucher", (req, res) => {
+//   const { number } = req.body;
+
+//   const sqlInsert = "INSERT INTO voucher (number) VALUES (?)";
+//   db.query(sqlInsert, [number], (err, result) => {
+//     if (err) {
+//       console.error(err);
+//       return res.status(500).json({ error: "Server Error" });
+//     }
+//     res.status(200).json({ message: "REGISTRATION SUCCESSFUL" });
+//   });
+// });
 
 app.post("/api/insertreg", (req, res) => {
   const { name, course, id2 } = req.body;
